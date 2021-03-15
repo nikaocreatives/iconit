@@ -1,0 +1,32 @@
+{
+  "name": "iconit",
+  "version": "1.0.0",
+  "description": "A CLI to help you build icon libraries (JSON & Sprites) with ease.",
+  "main": "src/index.js",
+  "bin": {
+    "iconit": "bin/create-icon-library"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "cli",
+    "icons",
+    "svgtoicon"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chas Turansky <chas@turansky.net> (http://turansky.net)",
+  "license": "MIT",
+  "dependencies": {
+    "arg": "^5.0.0",
+    "cheerio": "^1.0.0-rc.5",
+    "esm": "^3.2.25",
+    "html-minifier": "^4.0.0"
+  }
+}
