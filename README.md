@@ -1,9 +1,10 @@
 # iconit
- A CLI to help you build icon libraries (JSON & Sprites) from SVG files.
+
+A CLI to help you build icon libraries (JSON & Sprites) from SVG files.
 
 ## Installation
 
-Install required node packages 
+Install required node packages
 
 ```
 npm install -g iconit
@@ -11,7 +12,7 @@ npm install -g iconit
 
 ## Quick Usage
 
-Create a folder named svg and add icons into it.
+Create a folder named including and add icons into it.
 
 ```
 svg/*.svg
@@ -20,10 +21,10 @@ svg/*.svg
 Run base command
 
 ```
-iconit --name=my-icons
+iconit --name my-icons
 ```
 
-You'll find the icon library created in the dist folder.
+You'll find the icon library created in the `dist` folder.
 
 ## Options
 
@@ -31,11 +32,13 @@ You'll find the icon library created in the dist folder.
 iconit [options]
 ```
 
-| Option | Description |
-|--- | -----| 
-| `-n, --name <value>` | Icon library name default value is `icons`. |
-| `--json` | Only build json library. |
-| `--sprite` | Only build sprite library, but can't run unless json file has been built. |
+| Option                 | Description                                                            | Default Value |
+| ---------------------- | ---------------------------------------------------------------------- | ------------- |
+| `-n, --name <value>`   | Name for icon libraries.                                               | `icons`       |
+| `-i, --input <value>`  | Input directory containing all SVG files.                              | `/svg`        |
+| `-o, --output <value>` | Output directory for generated files.                                  | `/dist`       |
+| `--json`               | Only build json library.                                               |               |
+| `--sprite`             | Only build sprite library, but you need the json file to build sprite. |               |
 
 ## License
 

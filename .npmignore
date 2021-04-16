@@ -1,5 +1,4 @@
-dist
-svg
+svg-samples
 .*.swp
 ._*
 .DS_Store

@@ -10,13 +10,13 @@ export async function createJson(options) {
     }
 
     // Build JSON
-    var dir = './dist';
+    var dir = '.' + options.output;
     if (!fs.existsSync(dir)){
         fs.mkdirSync(dir);
     }
     
-    const IN_DIR = path.resolve(__dirname, process.cwd() + '/svg');
-    const OUT_FILE = path.resolve(__dirname, process.cwd() + '/dist/icons.json');
+    const IN_DIR = path.resolve(__dirname, process.cwd() + options.input);
+    const OUT_FILE = path.resolve(__dirname, process.cwd() + options.output + '/' + options.name + '.json');
     // console.log(`${OUT_FILE}...`);
 
     const svgFiles = fs

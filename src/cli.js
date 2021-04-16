@@ -8,7 +8,11 @@ function parseArgumentsIntoOptions(rawArgs) {
             '--name': String,
             '--json': Boolean,
             '--sprite': Boolean,
-            '-n': '--name'
+            '--output': String,
+            '--input': String,
+            '-n': '--name',
+            '-o': '--output',
+            '-i': '--input'
         },
         {   
             argv: rawArgs.slice(2),
@@ -18,7 +22,8 @@ function parseArgumentsIntoOptions(rawArgs) {
         name: args['--name'] || 'icons',
         json: args['--json'] || false,
         sprite: args['--sprite'] || false,
-        output: args._[0]
+        input: args['--input'] || '/svg',
+        output: args['--output'] || '/dist'
     }
 }
 
@@ -28,27 +33,27 @@ export async function cli(args) {
     // console.log(process.cwd() + '/dist/icons.json');
 
     // Build JSON on --json
-    if (options.json === true && fs.existsSync(process.cwd() + '/svg')) {
+    if (options.json === true && fs.existsSync(process.cwd() + options.input)) {
         createJson(options);
     } else if (options.json === true) {
-        console.log('SVG folder of icons does not exist.');
+        console.log('Icons source folder does not exist.');
     }
 
     // Build Sprite on --spirite
-    if (options.sprite === true && fs.existsSync(process.cwd() + '/dist/icons.json')) {
+    if (options.sprite === true && fs.existsSync(process.cwd() + options.output + '/' + options.name + '.json')) {
         let { createSprite } = await import('./build-sprite.js');
         createSprite(options);
     } else if (options.sprite === true) {
-        console.log('"dist/icons.json" does not exisit.');
+        console.log('"'+ options.output +'/'+ options.name +'.json" does not exisit.');
     }
 
     // Build if no tags specified 
-    if (options.sprite === false && options.json === false && fs.existsSync(process.cwd() + '/svg')) {
+    if (options.sprite === false && options.json === false && fs.existsSync(process.cwd() + options.input)) {
         createJson(options);
         let { createSprite } = await import('./build-sprite.js');
         createSprite(options);
     } else {
-        console.log('SVG folder of icons does not exist.');
+        console.log('Icons source folder does not exist.');
     }
 }
 
